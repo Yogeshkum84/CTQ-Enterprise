@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ticket-analyser"
+version = "0.1.0"
+description = "Local-first IT ticket quality, SLA and trend analyser for ServiceNow exports."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+authors = [{ name = "Yogesh Kumar" }]
+keywords = ["servicenow", "itsm", "incident", "analytics", "quality", "sla"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Information Technology",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Office/Business",
+]
+dependencies = [
+  "pandas>=2.1",
+  "numpy>=1.26",
+  "scikit-learn>=1.3",
+  "plotly>=5.18",
+  "pyyaml>=6.0",
+  "openpyxl>=3.1",
+  "tabulate>=0.9",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4", "pytest-cov>=4.1", "ruff>=0.1.0", "mypy>=1.6"]
+
+[project.scripts]
+ticket-analyser = "ticket_analyser.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/Yogeshkum84/it-ticket-quality-analyser"
+Issues = "https://github.com/Yogeshkum84/it-ticket-quality-analyser/issues"
+Documentation = "https://github.com/Yogeshkum84/it-ticket-quality-analyser#readme"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
